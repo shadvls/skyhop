@@ -7,3 +7,4 @@ var CFG={W:320,H:480,gravity:0.25,flap:-5.5,pipeW:40,pipeGap:120,pipeSpeed:2,gro
 var S={MENU:0,PLAYING:1,GAMEOVER:2};
 var state=S.MENU,score=0,highScore=0;
 try{highScore=parseInt(localStorage.getItem("skyhop_high"))||0}catch(e){}
+var birdX=CFG.birdX,birdY=240,birdVy=0,birdR=CFG.birdR,birdRot=0;
