@@ -9,3 +9,4 @@ var state=S.MENU,score=0,highScore=0;
 try{highScore=parseInt(localStorage.getItem("skyhop_high"))||0}catch(e){}
 var birdX=CFG.birdX,birdY=240,birdVy=0,birdR=CFG.birdR,birdRot=0;
 var gravity=CFG.gravity,flap=CFG.flap;
+var groundY=H-CFG.groundH;
