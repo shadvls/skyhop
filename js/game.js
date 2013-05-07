@@ -11,3 +11,4 @@ var birdX=CFG.birdX,birdY=240,birdVy=0,birdR=CFG.birdR,birdRot=0;
 var gravity=CFG.gravity,flap=CFG.flap;
 var groundY=H-CFG.groundH;
 var pipeW=CFG.pipeW,pipeGap=CFG.pipeGap,pipeSpeed=CFG.pipeSpeed;
+var pipes=[];
