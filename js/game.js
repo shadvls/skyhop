@@ -12,3 +12,4 @@ var gravity=CFG.gravity,flap=CFG.flap;
 var groundY=H-CFG.groundH;
 var pipeW=CFG.pipeW,pipeGap=CFG.pipeGap,pipeSpeed=CFG.pipeSpeed;
 var pipes=[];
+var particles=[];
