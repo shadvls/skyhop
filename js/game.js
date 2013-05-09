@@ -13,3 +13,4 @@ var groundY=H-CFG.groundH;
 var pipeW=CFG.pipeW,pipeGap=CFG.pipeGap,pipeSpeed=CFG.pipeSpeed;
 var pipes=[];
 var particles=[];
+var scorePop=0,displayScore=0,goAlpha=0,restartDelay=0,menuBlink=0;
