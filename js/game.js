@@ -14,3 +14,4 @@ var pipeW=CFG.pipeW,pipeGap=CFG.pipeGap,pipeSpeed=CFG.pipeSpeed;
 var pipes=[];
 var particles=[];
 var scorePop=0,displayScore=0,goAlpha=0,restartDelay=0,menuBlink=0;
+var shakeTimer=0,shakeIntensity=0,flashAlpha=0,slowMo=1;
