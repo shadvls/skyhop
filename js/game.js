@@ -18,3 +18,4 @@ var shakeTimer=0,shakeIntensity=0,flashAlpha=0,slowMo=1;
 var flapEase=0,frameCount=0,lastTime=Date.now();
 var muted=false;
 try{var savedMute=localStorage.getItem("skyhop_mute");if(savedMute)muted=savedMute==="true"}catch(e){}
+var actx=null;
