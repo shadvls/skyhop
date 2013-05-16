@@ -20,3 +20,4 @@ var muted=false;
 try{var savedMute=localStorage.getItem("skyhop_mute");if(savedMute)muted=savedMute==="true"}catch(e){}
 var actx=null;
 var scale=1;
+var cloudOffset=0,starPhase=0,groundX=0;
