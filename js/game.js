@@ -22,3 +22,4 @@ var actx=null;
 var scale=1;
 var cloudOffset=0,starPhase=0,groundX=0;
 var D={EASY:0,NORMAL:1,HARD:2,INSANE:3};
+var difficulty=D.NORMAL;
