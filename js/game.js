@@ -27,3 +27,4 @@ var diffPresets=[{pipeGap:140,pipeSpeed:1.5,gravity:0.22,flap:-4.8},{pipeGap:120
 var skyGrad=null;
 function cacheSkyGradient(){var g=ctx.createLinearGradient(0,0,0,H);g.addColorStop(0,"#1a1a2e");g.addColorStop(1,"#0f3460");skyGrad=g}
 var PIPE_BODY="#73b543",PIPE_CAP="#5a9136";
+var skin={body:"#f5c842",wing:"#e8a000",beak:"#ff6b35",eye:"#000"};
