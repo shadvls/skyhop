@@ -31,3 +31,4 @@ var skin={body:"#f5c842",wing:"#e8a000",beak:"#ff6b35",eye:"#000"};
 var skins={yellow:{body:"#f5c842",wing:"#e8a000",beak:"#ff6b35",eye:"#000"},red:{body:"#e74c3c",wing:"#c0392b",beak:"#f39c12",eye:"#000"},blue:{body:"#3498db",wing:"#2980b9",beak:"#f1c40f",eye:"#000"},gold:{body:"#f1c40f",wing:"#d4a017",beak:"#e67e22",eye:"#000"},raven:{body:"#2c3e50",wing:"#1a252f",beak:"#7f8c8d",eye:"#e74c3c"}};
 var skinName="yellow";
 try{var savedSkin=localStorage.getItem("skyhop_skin");if(savedSkin&&skins[savedSkin]){setSkin(savedSkin)}}catch(e){}
+var skinUnlocks={blue:5,gold:15,raven:30};
