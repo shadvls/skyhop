@@ -35,3 +35,4 @@ var skinUnlocks={blue:5,gold:15,raven:30};
 var themes={default:{sky1:"#1a1a2e",sky2:"#0f3460",pipe:"#73b543",pipeCap:"#5a9136",ground1:"#4a3728",ground2:"#5c4433"},sunset:{sky1:"#2d1b3d",sky2:"#e74c3c",pipe:"#c0392b",pipeCap:"#a93226",ground1:"#4a3728",ground2:"#5c4433"},midnight:{sky1:"#0a0a0f",sky2:"#1a1a2e",pipe:"#2c3e50",pipeCap:"#1a252f",ground1:"#111",ground2:"#222"},arctic:{sky1:"#3498db",sky2:"#ecf0f1",pipe:"#7f8c8d",pipeCap:"#95a5a6",ground1:"#ecf0f1",ground2:"#bdc3c6"},swamp:{sky1:"#1e3a1e",sky2:"#2d5a2d",pipe:"#4a7a4a",pipeCap:"#3a6a3a",ground1:"#2d1f0e",ground2:"#3d2f1e"}};
 var themeName="default";
 var powerups=[],powerupTimer=0,hasShield=false,scoreMult=1;
+var powerupTimers={slowmo:0,shield:0,magnet:0};
