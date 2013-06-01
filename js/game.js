@@ -36,3 +36,4 @@ var themes={default:{sky1:"#1a1a2e",sky2:"#0f3460",pipe:"#73b543",pipeCap:"#5a91
 var themeName="default";
 var powerups=[],powerupTimer=0,hasShield=false,scoreMult=1;
 var powerupTimers={slowmo:0,shield:0,magnet:0};
+var comboTexts=[];
