@@ -37,3 +37,4 @@ var themeName="default";
 var powerups=[],powerupTimer=0,hasShield=false,scoreMult=1;
 var powerupTimers={slowmo:0,shield:0,magnet:0};
 var comboTexts=[];
+var lb=[];
