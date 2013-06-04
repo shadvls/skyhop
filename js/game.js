@@ -39,3 +39,4 @@ var powerupTimers={slowmo:0,shield:0,magnet:0};
 var comboTexts=[];
 var lb=[];
 try{lb=JSON.parse(localStorage.getItem("skyhop_lb"))||[]}catch(e){}
+var newHighScore=false;
