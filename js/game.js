@@ -41,3 +41,4 @@ var lb=[];
 try{lb=JSON.parse(localStorage.getItem("skyhop_lb"))||[]}catch(e){}
 var newHighScore=false;
 var bgCache=null;
+var frameTime=0,touchTimer=null;
