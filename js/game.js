@@ -43,3 +43,4 @@ var newHighScore=false;
 var bgCache=null;
 var frameTime=0,touchTimer=null;
 var landscapeWarn=false;
+var stats={games:0,bestCombo:0,totalScore:0};
