@@ -45,3 +45,4 @@ var frameTime=0,touchTimer=null;
 var landscapeWarn=false;
 var stats={games:0,bestCombo:0,totalScore:0};
 try{var s=JSON.parse(localStorage.getItem("skyhop_stats"));if(s){stats=s}}catch(e){}
+var fps=0,fpsCount=0,fpsTime=0;
