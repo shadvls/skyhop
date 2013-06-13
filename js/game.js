@@ -48,3 +48,4 @@ try{var s=JSON.parse(localStorage.getItem("skyhop_stats"));if(s){stats=s}}catch(
 var fps=0,fpsCount=0,fpsTime=0;
 var achievements=[];
 var ACHIEVEMENTS={firstFlap:{name:"First Flap",desc:"Play your first game",icon:"★"},score10:{name:"Double Digits",desc:"Score 10 points",icon:"★★"},score50:{name:"Half Century",desc:"Score 50 points",icon:"★★★"},score100:{name:"Centurion",desc:"Score 100 points",icon:"★★★★"},death100:{name:"Persistent",desc:"Die 100 times",icon:"★"}};
+try{var a=JSON.parse(localStorage.getItem("skyhop_ach"));if(a){achievements=a}}catch(e){}
