@@ -51,3 +51,4 @@ var ACHIEVEMENTS={firstFlap:{name:"First Flap",desc:"Play your first game",icon:
 try{var a=JSON.parse(localStorage.getItem("skyhop_ach"));if(a){achievements=a}}catch(e){}
 var notifications=[];
 var konami=[38,38,40,40,37,39,37,39,66,65];var konamiIdx=0;var konamiActive=false;
+var toasts=[];
