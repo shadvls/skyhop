@@ -52,3 +52,5 @@ try{var a=JSON.parse(localStorage.getItem("skyhop_ach"));if(a){achievements=a}}c
 var notifications=[];
 var konami=[38,38,40,40,37,39,37,39,66,65];var konamiIdx=0;var konamiActive=false;
 var toasts=[];
+
+function drawSky(){if(!skyGrad)cacheSkyGradient();ctx.fillStyle=skyGrad;ctx.fillRect(0,0,W,H)}
