@@ -55,3 +55,4 @@ var toasts=[];
 
 function drawSky(){if(!skyGrad)cacheSkyGradient();ctx.fillStyle=skyGrad;ctx.fillRect(0,0,W,H)}
 function drawStars(){for(var i=0;i<30;i++){var sx=(i*37+13)%W,sy=(i*53+7)%(groundY*0.6);var bright=0.3+0.7*Math.sin(starPhase+i*2);ctx.globalAlpha=bright;ctx.fillStyle="rgba(255,255,255,0.5)";ctx.fillRect(sx,sy,2,2)}ctx.globalAlpha=1}
+function updateStars(){starPhase+=0.02}
