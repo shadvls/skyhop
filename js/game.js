@@ -59,3 +59,4 @@ function updateStars(){starPhase+=0.02}
 function drawClouds(){ctx.fillStyle="rgba(255,255,255,0.03)";for(var i=0;i<3;i++){var cx=(i*120+cloudOffset)%(W+100)-50;ctx.beginPath();ctx.ellipse(cx,50+i*40,40,10,0,0,Math.PI*2);ctx.fill()}}
 function updateClouds(){cloudOffset-=0.2}
 function drawGround(){ctx.fillStyle="#4a3728";ctx.fillRect(0,groundY,W,CFG.groundH);ctx.fillStyle="#5c4433";for(var x=groundX;x<W;x+=24){ctx.fillRect(x,groundY,24,5);ctx.fillRect(x+12,groundY+8,12,5);ctx.fillRect(x,groundY+16,24,5)}}
+function updateGround(){groundX-=pipeSpeed;if(groundX<=-24)groundX+=24}
