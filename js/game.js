@@ -61,3 +61,4 @@ function updateClouds(){cloudOffset-=0.2}
 function drawGround(){ctx.fillStyle="#4a3728";ctx.fillRect(0,groundY,W,CFG.groundH);ctx.fillStyle="#5c4433";for(var x=groundX;x<W;x+=24){ctx.fillRect(x,groundY,24,5);ctx.fillRect(x+12,groundY+8,12,5);ctx.fillRect(x,groundY+16,24,5)}}
 function updateGround(){groundX-=pipeSpeed;if(groundX<=-24)groundX+=24}
 function drawFog(){var g=ctx.createRadialGradient(W/2,H*0.3,0,W/2,H*0.3,200);g.addColorStop(0,"rgba(255,255,255,0)");g.addColorStop(1,"rgba(0,0,0,0.3)");ctx.fillStyle=g;ctx.fillRect(0,0,W,H)}
+function spawnPipe(){pipes.push({x:W+50,gapY:rand(140,300),scored:false})}
