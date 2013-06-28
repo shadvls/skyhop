@@ -63,3 +63,4 @@ function updateGround(){groundX-=pipeSpeed;if(groundX<=-24)groundX+=24}
 function drawFog(){var g=ctx.createRadialGradient(W/2,H*0.3,0,W/2,H*0.3,200);g.addColorStop(0,"rgba(255,255,255,0)");g.addColorStop(1,"rgba(0,0,0,0.3)");ctx.fillStyle=g;ctx.fillRect(0,0,W,H)}
 function spawnPipe(){pipes.push({x:W+50,gapY:rand(140,300),scored:false})}
 function updatePipes(){for(var i=pipes.length-1;i>=0;i--){var p=pipes[i];p.x-=getPipeSpeed();if(!p.scored&&p.x+pipeW<birdX){p.scored=true;addScore()}if(p.x+pipeW<0)pipes.splice(i,1)}}
+function drawPipes(){for(var i=0;i<pipes.length;i++){var p=pipes[i];ctx.fillStyle=PIPE_BODY;ctx.fillRect(p.x,0,pipeW,p.gapY-pipeGap/2);ctx.fillRect(p.x,p.gapY+pipeGap/2,pipeW,H-groundY-p.gapY-pipeGap/2);ctx.fillStyle=PIPE_CAP;ctx.fillRect(p.x-4,p.gapY-pipeGap/2-15,pipeW+8,15);ctx.fillRect(p.x-4,p.gapY+pipeGap/2,pipeW+8,15)}}
