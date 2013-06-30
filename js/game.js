@@ -65,3 +65,4 @@ function spawnPipe(){pipes.push({x:W+50,gapY:rand(140,300),scored:false})}
 function updatePipes(){for(var i=pipes.length-1;i>=0;i--){var p=pipes[i];p.x-=getPipeSpeed();if(!p.scored&&p.x+pipeW<birdX){p.scored=true;addScore()}if(p.x+pipeW<0)pipes.splice(i,1)}}
 function drawPipes(){for(var i=0;i<pipes.length;i++){var p=pipes[i];ctx.fillStyle=PIPE_BODY;ctx.fillRect(p.x,0,pipeW,p.gapY-pipeGap/2);ctx.fillRect(p.x,p.gapY+pipeGap/2,pipeW,H-groundY-p.gapY-pipeGap/2);ctx.fillStyle=PIPE_CAP;ctx.fillRect(p.x-4,p.gapY-pipeGap/2-15,pipeW+8,15);ctx.fillRect(p.x-4,p.gapY+pipeGap/2,pipeW+8,15)}}
 function updateBird(){flapEase*=.9;birdVy+=gravity*lerp(1,0.7,1-flapEase);birdVy=clamp(birdVy,-20,12);birdY+=birdVy;birdY=clamp(birdY,birdR,groundY-birdR);if(state==S.GAMEOVER){birdRot+=0.1}else if(birdVy>0){birdRot=Math.min(birdRot+0.03,0.5)}else{birdRot=Math.max(birdRot-0.02,-0.5)}}
+function birdFlap(){birdVy=flap;birdRot=-0.5;flapEase=1}
