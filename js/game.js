@@ -80,3 +80,4 @@ function initAudio(){if(!actx)try{actx=new(window.AudioContext||window.webkitAud
 function playTone(freq,dur,type,vol){if(muted||!actx)return;var o=actx.createOscillator(),g=actx.createGain();o.connect(g);g.connect(actx.destination);o.type=type||"sine";o.frequency.setValueAtTime(freq,actx.currentTime);g.gain.setValueAtTime(vol||0.3,actx.currentTime);g.gain.exponentialRampToValueAtTime(0.001,actx.currentTime+dur);o.start(actx.currentTime);o.stop(actx.currentTime+dur)}
 function playFlap(){playTone(400,0.1,"sine",0.3)}
 function playScore(){playTone(800,0.08,"sine",0.2)}
+function playHit(){playTone(200,0.3,"sawtooth",0.3)}
