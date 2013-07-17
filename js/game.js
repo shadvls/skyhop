@@ -82,3 +82,4 @@ function playFlap(){playTone(400,0.1,"sine",0.3)}
 function playScore(){playTone(800,0.08,"sine",0.2)}
 function playHit(){playTone(200,0.3,"sawtooth",0.3)}
 function toggleMute(){muted=!muted;try{localStorage.setItem("skyhop_mute",muted)}catch(e){}}
+function emitParticle(x,y,color){particles.push({x:x,y:y,vx:rand(-3,3),vy:rand(-3,3),life:1,color:color})}
