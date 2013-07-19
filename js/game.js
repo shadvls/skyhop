@@ -84,3 +84,4 @@ function playHit(){playTone(200,0.3,"sawtooth",0.3)}
 function toggleMute(){muted=!muted;try{localStorage.setItem("skyhop_mute",muted)}catch(e){}}
 function emitParticle(x,y,color){particles.push({x:x,y:y,vx:rand(-3,3),vy:rand(-3,3),life:1,color:color})}
 function emitBurst(x,y,count,color){for(var i=0;i<count;i++){particles.push({x:x,y:y,vx:rand(-4,4),vy:rand(-4,4),life:1.2,color:color||"#fff"})}}
+function updateParticles(){for(var i=particles.length-1;i>=0;i--){var p=particles[i];p.x+=p.vx;p.y+=p.vy;p.vy+=0.1;p.life-=0.03;if(p.life<=0)particles.splice(i,1)}}
