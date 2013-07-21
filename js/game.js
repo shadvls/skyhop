@@ -86,3 +86,4 @@ function emitParticle(x,y,color){particles.push({x:x,y:y,vx:rand(-3,3),vy:rand(-
 function emitBurst(x,y,count,color){for(var i=0;i<count;i++){particles.push({x:x,y:y,vx:rand(-4,4),vy:rand(-4,4),life:1.2,color:color||"#fff"})}}
 function updateParticles(){for(var i=particles.length-1;i>=0;i--){var p=particles[i];p.x+=p.vx;p.y+=p.vy;p.vy+=0.1;p.life-=0.03;if(p.life<=0)particles.splice(i,1)}}
 function drawParticles(){for(var i=0;i<particles.length;i++){var p=particles[i];ctx.globalAlpha=Math.max(0,p.life);ctx.fillStyle=p.color;ctx.fillRect(p.x-2,p.y-2,4,4)}ctx.globalAlpha=1}
+function triggerShake(i,d){shakeIntensity=i;shakeTimer=d}
