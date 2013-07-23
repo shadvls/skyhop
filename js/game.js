@@ -88,3 +88,4 @@ function updateParticles(){for(var i=particles.length-1;i>=0;i--){var p=particle
 function drawParticles(){for(var i=0;i<particles.length;i++){var p=particles[i];ctx.globalAlpha=Math.max(0,p.life);ctx.fillStyle=p.color;ctx.fillRect(p.x-2,p.y-2,4,4)}ctx.globalAlpha=1}
 function triggerShake(i,d){shakeIntensity=i;shakeTimer=d}
 function applyShake(){if(shakeTimer>0){shakeTimer--;ctx.save();var sx=rand(-shakeIntensity,shakeIntensity),sy=rand(-shakeIntensity,shakeIntensity);ctx.translate(sx,sy);if(shakeTimer<=0)ctx.restore()}}
+function triggerFlash(){flashAlpha=1}
