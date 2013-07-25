@@ -90,3 +90,4 @@ function triggerShake(i,d){shakeIntensity=i;shakeTimer=d}
 function applyShake(){if(shakeTimer>0){shakeTimer--;ctx.save();var sx=rand(-shakeIntensity,shakeIntensity),sy=rand(-shakeIntensity,shakeIntensity);ctx.translate(sx,sy);if(shakeTimer<=0)ctx.restore()}}
 function triggerFlash(){flashAlpha=1}
 function triggerSlowMo(){slowMo=0.3}
+function updateSlowMo(){if(slowMo<1)slowMo=Math.min(slowMo+0.02,1)}
