@@ -91,3 +91,4 @@ function applyShake(){if(shakeTimer>0){shakeTimer--;ctx.save();var sx=rand(-shak
 function triggerFlash(){flashAlpha=1}
 function triggerSlowMo(){slowMo=0.3}
 function updateSlowMo(){if(slowMo<1)slowMo=Math.min(slowMo+0.02,1)}
+function getPipeSpeed(){return Math.min(pipeSpeed+Math.floor(score/10)*0.2,6)}
