@@ -93,3 +93,4 @@ function triggerSlowMo(){slowMo=0.3}
 function updateSlowMo(){if(slowMo<1)slowMo=Math.min(slowMo+0.02,1)}
 function getPipeSpeed(){return Math.min(pipeSpeed+Math.floor(score/10)*0.2,6)}
 function getDynamicPipeSpeed(){return Math.min(pipeSpeed+Math.floor(score/8)*0.3,7)}
+function getDynamicPipeGap(){return Math.max(pipeGap-Math.floor(score/5)*2,80)}
