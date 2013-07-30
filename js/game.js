@@ -95,3 +95,4 @@ function getPipeSpeed(){return Math.min(pipeSpeed+Math.floor(score/10)*0.2,6)}
 function getDynamicPipeSpeed(){return Math.min(pipeSpeed+Math.floor(score/8)*0.3,7)}
 function getDynamicPipeGap(){return Math.max(pipeGap-Math.floor(score/5)*2,80)}
 function getDynamicGravity(){return Math.min(gravity+Math.floor(score/15)*0.02,0.4)}
+function setSkin(n){if(skins[n]){skin.body=skins[n].body;skin.wing=skins[n].wing;skin.beak=skins[n].beak;skin.eye=skins[n].eye;skinName=n;try{localStorage.setItem("skyhop_skin",skinName)}catch(e){}}}
