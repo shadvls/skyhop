@@ -101,3 +101,4 @@ function drawSkinSelector(){var names=["yellow","red","blue","gold","raven"];for
 function handleSkinClick(x,y){var names=["yellow","red","blue","gold","raven"];for(var i=0;i<names.length;i++){var cx=W/2-60+i*30,cy=410;if(Math.abs(x-cx)<12&&Math.abs(y-cy)<12){setSkin(names[i])}}}
 function setTheme(n){if(themes[n]){themeName=n;var t=themes[n];PIPE_BODY=t.pipe;PIPE_CAP=t.pipeCap}}
 function drawThemeSelector(){var names=["default","sunset","midnight","arctic","swamp"];for(var i=0;i<names.length;i++){ctx.fillStyle=themes[names[i]].pipe;ctx.fillRect(W/2-80+i*32,440,28,10);if(names[i]==themeName){ctx.strokeStyle="#fff";ctx.lineWidth=1;ctx.strokeRect(W/2-80+i*32-1,439,30,12)}}}
+function spawnPowerup(){var types=["slowmo","shield","magnet"];var t=types[Math.floor(rand(0,3))];powerups.push({x:W+50,y:rand(150,H-150),type:t})}
