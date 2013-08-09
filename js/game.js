@@ -105,3 +105,4 @@ function spawnPowerup(){var types=["slowmo","shield","magnet"];var t=types[Math.
 function updatePowerups(){for(var i=powerups.length-1;i>=0;i--){var p=powerups[i];p.x-=pipeSpeed;if(p.x+10<0)powerups.splice(i,1)}powerupTimer++;if(powerupTimer>300&&state==S.PLAYING){spawnPowerup();powerupTimer=0}}
 function checkPowerupCollision(){for(var i=powerups.length-1;i>=0;i--){var p=powerups[i];if(Math.abs(birdX-p.x)<20&&Math.abs(birdY-p.y)<20){if(p.type=="slowmo"){activateSlowmo()}else if(p.type=="shield"){activateShield()}else if(p.type=="magnet"){activateMagnet()}powerups.splice(i,1);playScore()}}}
 function activateSlowmo(){slowMo=0.4;powerupTimers.slowmo=300}
+function activateShield(){hasShield=true;powerupTimers.shield=300}
