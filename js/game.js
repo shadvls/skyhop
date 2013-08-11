@@ -107,3 +107,4 @@ function checkPowerupCollision(){for(var i=powerups.length-1;i>=0;i--){var p=pow
 function activateSlowmo(){slowMo=0.4;powerupTimers.slowmo=300}
 function activateShield(){hasShield=true;powerupTimers.shield=300}
 function activateMagnet(){scoreMult=2;powerupTimers.magnet=300}
+function updatePowerupTimers(){for(var k in powerupTimers){if(powerupTimers[k]>0){powerupTimers[k]--;if(powerupTimers[k]==0){if(k=="slowmo")slowMo=1;if(k=="shield")hasShield=false;if(k=="magnet")scoreMult=1}}}}
