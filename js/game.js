@@ -108,3 +108,4 @@ function activateSlowmo(){slowMo=0.4;powerupTimers.slowmo=300}
 function activateShield(){hasShield=true;powerupTimers.shield=300}
 function activateMagnet(){scoreMult=2;powerupTimers.magnet=300}
 function updatePowerupTimers(){for(var k in powerupTimers){if(powerupTimers[k]>0){powerupTimers[k]--;if(powerupTimers[k]==0){if(k=="slowmo")slowMo=1;if(k=="shield")hasShield=false;if(k=="magnet")scoreMult=1}}}}
+function drawPowerupHUD(){var y=10;for(var k in powerupTimers){if(powerupTimers[k]>0){ctx.fillStyle="#aaa";ctx.font="10px monospace";ctx.textAlign="left";var label=k=="slowmo"?"SLOW":k=="shield"?"SHLD":"MAG";ctx.fillText(label+" "+Math.ceil(powerupTimers[k]/60)+"s",10,y);y+=14}}}
