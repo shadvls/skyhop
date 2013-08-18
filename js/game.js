@@ -114,3 +114,4 @@ function applyDifficulty(d){var p=diffPresets[d];pipeGap=p.pipeGap;pipeSpeed=p.p
 function drawDifficultySelector(){var names=["Easy","Normal","Hard","Insane"];for(var i=0;i<names.length;i++){ctx.fillStyle=difficulty==i?"#fff":"#555";ctx.font="10px monospace";ctx.textAlign="center";ctx.fillText(names[i],W/2-60+i*40,390);if(difficulty==i){ctx.fillStyle="#fff";ctx.fillRect(W/2-60+i*40-12,392,24,1)}}}
 function handleDiffClick(x,y){for(var i=0;i<4;i++){var cx=W/2-60+i*40,cy=390;if(Math.abs(x-cx)<20&&Math.abs(y-cy)<10){difficulty=i;applyDifficulty(difficulty);try{localStorage.setItem("skyhop_diff",difficulty)}catch(e){}}}}
 try{var savedDiff=parseInt(localStorage.getItem("skyhop_diff"));if(!isNaN(savedDiff)){difficulty=savedDiff;applyDifficulty(difficulty)}}catch(e){}
+function saveLB(){try{localStorage.setItem("skyhop_lb",JSON.stringify(lb))}catch(e){}}
