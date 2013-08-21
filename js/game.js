@@ -117,3 +117,4 @@ try{var savedDiff=parseInt(localStorage.getItem("skyhop_diff"));if(!isNaN(savedD
 function saveLB(){try{localStorage.setItem("skyhop_lb",JSON.stringify(lb))}catch(e){}}
 function submitScore(){lb.push({score:score,date:new Date().toLocaleDateString()});lb.sort(function(a,b){return b.score-a.score});if(lb.length>10)lb=lb.slice(0,10);saveLB()}
 function resetLeaderboard(){lb=[];saveLB()}
+function drawLeaderboard(){ctx.fillStyle="rgba(0,0,0,0.85)";ctx.fillRect(W/2-110,70,220,340);ctx.fillStyle="#fff";ctx.font="bold 16px monospace";ctx.textAlign="center";ctx.fillText("TOP 10",W/2,95);if(lb.length==0){ctx.fillStyle="#555";ctx.font="12px monospace";ctx.fillText("No scores yet!",W/2,200)}else{ctx.font="12px monospace";for(var i=0;i<Math.min(lb.length,10);i++){var e=lb[i];ctx.fillStyle=e.score==score&&state==S.GAMEOVER?"#ffd700":i==0?"#ffd700":i==1?"#c0c0c0":i==2?"#cd7f32":"#aaa";ctx.fillText((i+1)+". "+e.score+" "+e.date,W/2,120+i*25)}}}
