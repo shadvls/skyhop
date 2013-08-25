@@ -121,3 +121,4 @@ function drawLeaderboard(){ctx.fillStyle="rgba(0,0,0,0.85)";ctx.fillRect(W/2-110
 function emitComboText(x,y,txt){comboTexts.push({x:x,y:y,text:txt,life:1})}
 function updateComboTexts(){for(var i=comboTexts.length-1;i>=0;i--){var t=comboTexts[i];t.y-=1;t.life-=0.02;if(t.life<=0)comboTexts.splice(i,1)}}
 function drawComboTexts(){for(var i=0;i<comboTexts.length;i++){var t=comboTexts[i];ctx.globalAlpha=t.life;ctx.fillStyle="#ffd700";ctx.font="bold 14px monospace";ctx.textAlign="center";ctx.fillText(t.text,t.x,t.y)}ctx.globalAlpha=1}
+function resize(){var r=Math.min(window.innerWidth/W,window.innerHeight/H);c.style.width=(W*r)+"px";c.style.height=(H*r)+"px";scale=r}
