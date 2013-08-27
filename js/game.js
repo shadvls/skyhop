@@ -123,3 +123,4 @@ function updateComboTexts(){for(var i=comboTexts.length-1;i>=0;i--){var t=comboT
 function drawComboTexts(){for(var i=0;i<comboTexts.length;i++){var t=comboTexts[i];ctx.globalAlpha=t.life;ctx.fillStyle="#ffd700";ctx.font="bold 14px monospace";ctx.textAlign="center";ctx.fillText(t.text,t.x,t.y)}ctx.globalAlpha=1}
 function resize(){var r=Math.min(window.innerWidth/W,window.innerHeight/H);c.style.width=(W*r)+"px";c.style.height=(H*r)+"px";scale=r}
 function getPos(e){var r=c.getBoundingClientRect();return{x:(e.clientX||e.touches[0].clientX-r.left)/scale,y:(e.clientY||e.touches[0].clientY-r.top)/scale}}
+function checkOrientation(){landscapeWarn=window.innerWidth>window.innerHeight&&window.innerWidth<500}
