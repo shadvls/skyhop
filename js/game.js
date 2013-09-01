@@ -128,3 +128,4 @@ function drawOrientationWarn(){if(landscapeWarn){ctx.fillStyle="rgba(0,0,0,0.9)"
 function onTap(e){var pos=getPos(e);initAudio();if(restartDelay>0)return;if(state==S.MENU){handleSkinClick(pos.x,pos.y);handleDiffClick(pos.x,pos.y)}else if(state==S.PLAYING){if(!stats.games)unlockAchievement("firstFlap");birdFlap();playFlap();emitBurst(birdX,birdY,3,"rgba(255,255,255,0.5)")}else if(state==S.GAMEOVER&&restartDelay<=0){resetGame()}}
 function onTouchStart(e){e.preventDefault();if(e.touches.length>1)return;touchTimer=setTimeout(function(){touchTimer=null},500)}
 function onTouchEnd(e){if(touchTimer&&e.changedTouches.length==1){clearTimeout(touchTimer);touchTimer=null;onTap(e)}}
+c.addEventListener("mousedown",onTap);
