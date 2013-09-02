@@ -129,3 +129,4 @@ function onTap(e){var pos=getPos(e);initAudio();if(restartDelay>0)return;if(stat
 function onTouchStart(e){e.preventDefault();if(e.touches.length>1)return;touchTimer=setTimeout(function(){touchTimer=null},500)}
 function onTouchEnd(e){if(touchTimer&&e.changedTouches.length==1){clearTimeout(touchTimer);touchTimer=null;onTap(e)}}
 c.addEventListener("mousedown",onTap);
+c.addEventListener("touchstart",onTouchStart,{passive:false});
