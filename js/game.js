@@ -130,3 +130,4 @@ function onTouchStart(e){e.preventDefault();if(e.touches.length>1)return;touchTi
 function onTouchEnd(e){if(touchTimer&&e.changedTouches.length==1){clearTimeout(touchTimer);touchTimer=null;onTap(e)}}
 c.addEventListener("mousedown",onTap);
 c.addEventListener("touchstart",onTouchStart,{passive:false});
+c.addEventListener("touchend",onTouchEnd);
