@@ -131,3 +131,4 @@ function onTouchEnd(e){if(touchTimer&&e.changedTouches.length==1){clearTimeout(t
 c.addEventListener("mousedown",onTap);
 c.addEventListener("touchstart",onTouchStart,{passive:false});
 c.addEventListener("touchend",onTouchEnd);
+document.addEventListener("keydown",function(e){if(e.code=="Space"){e.preventDefault();onTap(e)}});
