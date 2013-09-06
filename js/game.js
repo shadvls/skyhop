@@ -133,3 +133,4 @@ c.addEventListener("touchstart",onTouchStart,{passive:false});
 c.addEventListener("touchend",onTouchEnd);
 document.addEventListener("keydown",function(e){if(e.code=="Space"){e.preventDefault();onTap(e)}});
 document.addEventListener("keydown",function(e){if(e.keyCode==konami[konamiIdx]){konamiIdx++;if(konamiIdx==konami.length){konamiActive=true;addToast("KONAMI CODE ACTIVATED!","#ffd700");konamiIdx=0}}else{konamiIdx=0}});
+function unlockAchievement(id){if(achievements.indexOf(id)==-1){achievements.push(id);try{localStorage.setItem("skyhop_ach",JSON.stringify(achievements))}catch(e){}var a=ACHIEVEMENTS[id];if(a)addToast(a.icon+" "+a.name,"#ffd700")}}
