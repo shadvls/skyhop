@@ -138,3 +138,4 @@ function checkAchievements(){if(score>=10&&achievements.indexOf("score10")==-1)u
 function drawNotifications(){for(var i=0;i<notifications.length;i++){var n=notifications[i];ctx.globalAlpha=n.life;ctx.fillStyle=n.color;ctx.font="bold 12px monospace";ctx.textAlign="center";ctx.fillText(n.text,W/2,n.y);n.y-=0.5;n.life-=0.01}ctx.globalAlpha=1;notifications=notifications.filter(function(n){return n.life>0})}
 function addToast(text,color){toasts.push({text:text,color:color||"#fff",life:1,y:60})}
 function drawToasts(){for(var i=toasts.length-1;i>=0;i--){var t=toasts[i];if(t.life>0.5){ctx.globalAlpha=1;ctx.fillStyle=t.color;ctx.font="bold 12px monospace";ctx.textAlign="center";ctx.fillText(t.text,W/2,t.y)}t.life-=0.008;t.y-=0.3;if(t.life<=0)toasts.splice(i,1)}ctx.globalAlpha=1}
+function saveStats(){try{localStorage.setItem("skyhop_stats",JSON.stringify(stats))}catch(e){}}
