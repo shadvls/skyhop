@@ -140,3 +140,5 @@ function addToast(text,color){toasts.push({text:text,color:color||"#fff",life:1,
 function drawToasts(){for(var i=toasts.length-1;i>=0;i--){var t=toasts[i];if(t.life>0.5){ctx.globalAlpha=1;ctx.fillStyle=t.color;ctx.font="bold 12px monospace";ctx.textAlign="center";ctx.fillText(t.text,W/2,t.y)}t.life-=0.008;t.y-=0.3;if(t.life<=0)toasts.splice(i,1)}ctx.globalAlpha=1}
 function saveStats(){try{localStorage.setItem("skyhop_stats",JSON.stringify(stats))}catch(e){}}
 function drawFPS(){fpsCount++;var now=Date.now();if(now-fpsTime>1000){fps=fpsCount;fpsCount=0;fpsTime=now}if(konamiActive){ctx.fillStyle="rgba(0,255,0,0.5)";ctx.font="10px monospace";ctx.textAlign="left";ctx.fillText(fps+" FPS",5,25)}}
+function gameLoop(){update();render();requestAnimationFrame(gameLoop)}
+function startGameLoop(){gameLoop()}
