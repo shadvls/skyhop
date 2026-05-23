@@ -1,3 +1,5 @@
+<div align="center">
+
 # Void Strike
 
 A classic arcade shooter built with **C# and Blazor WebAssembly**, running entirely in the browser with no server-side dependencies. Inspired by the Asteroids genre, Void Strike demonstrates that C# can power real-time interactive applications client-side through WebAssembly.
@@ -5,6 +7,8 @@ A classic arcade shooter built with **C# and Blazor WebAssembly**, running entir
 ![License](https://img.shields.io/github/license/sha-wrks/Void-Strike)
 ![.NET](https://img.shields.io/badge/.NET-9.0-512BD4)
 ![Platform](https://img.shields.io/badge/platform-WebAssembly-blue)
+
+</div>
 
 ---
 
