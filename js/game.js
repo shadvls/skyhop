@@ -125,7 +125,7 @@ function resize(){var r=Math.min(window.innerWidth/W,window.innerHeight/H);c.sty
 function getPos(e){var cx=e.clientX||(e.touches&&e.touches[0]&&e.touches[0].clientX)||0,cy=e.clientY||(e.touches&&e.touches[0]&&e.touches[0].clientY)||0;var r=c.getBoundingClientRect();return{x:(cx-r.left)/scale,y:(cy-r.top)/scale}}
 function checkOrientation(){landscapeWarn=window.innerWidth>window.innerHeight&&window.innerWidth<500}
 function drawOrientationWarn(){if(landscapeWarn){ctx.fillStyle="rgba(0,0,0,0.9)";ctx.fillRect(0,0,W,H);ctx.fillStyle="#fff";ctx.font="16px monospace";ctx.textAlign="center";ctx.fillText("Please rotate your device",W/2,H/2)}}
-function onTap(e){var pos=getPos(e);initAudio();if(restartDelay>0)return;if(state==S.MENU){handleSkinClick(pos.x,pos.y);handleDiffClick(pos.x,pos.y)}else if(state==S.PLAYING){if(!stats.games)unlockAchievement("firstFlap");birdFlap();playFlap();emitBurst(birdX,birdY,3,"rgba(255,255,255,0.5)")}else if(state==S.GAMEOVER&&restartDelay<=0){resetGame()}}
+function onTap(e){var pos=getPos(e);initAudio();if(restartDelay>0)return;if(state==S.MENU){handleSkinClick(pos.x,pos.y);handleDiffClick(pos.x,pos.y);resetGame();birdFlap()}else if(state==S.PLAYING){if(!stats.games)unlockAchievement("firstFlap");birdFlap();playFlap();emitBurst(birdX,birdY,3,"rgba(255,255,255,0.5)")}else if(state==S.GAMEOVER&&restartDelay<=0){resetGame()}}
 function onTouchStart(e){e.preventDefault();if(e.touches.length>1)return;touchTimer=setTimeout(function(){touchTimer=null},500)}
 function onTouchEnd(e){if(touchTimer&&e.changedTouches.length==1){clearTimeout(touchTimer);touchTimer=null;onTap(e)}}
 window.addEventListener("resize",resize);
