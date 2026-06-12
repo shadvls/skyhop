@@ -1,20 +1,20 @@
 # SkyHop
 
+[![Vercel](https://img.shields.io/badge/Vercel-000000?logo=vercel&logoColor=white&style=flat-square)](https://skyhop.vercel.app)
 [![HTML5](https://img.shields.io/badge/HTML5-E34F26?logo=html5&logoColor=white&style=flat-square)](https://developer.mozilla.org/en-US/docs/Web/HTML)
 [![CSS3](https://img.shields.io/badge/CSS3-1572B6?logo=css3&logoColor=white&style=flat-square)](https://developer.mozilla.org/en-US/docs/Web/CSS)
 [![JavaScript](https://img.shields.io/badge/JavaScript-F7DF1E?logo=javascript&logoColor=black&style=flat-square)](https://developer.mozilla.org/en-US/docs/Web/JavaScript)
-[![Canvas](https://img.shields.io/badge/Canvas-000000?logo=html5&logoColor=white&style=flat-square)](https://developer.mozilla.org/en-US/docs/Web/API/Canvas_API)
 [![License](https://img.shields.io/badge/License-MIT-red.svg?style=flat-square)](LICENSE)
 
-[![Play](https://img.shields.io/badge/Play-SkyHop-000000?style=flat-square)](https://shadvls.github.io/skyhop)
+[![Play](https://img.shields.io/badge/Play_SkyHop_›-000000?style=flat-square)](https://skyhop.vercel.app)
 
-A side-scrolling flappy-style browser game built entirely with vanilla HTML5, CSS3, and JavaScript. Fly through obstacles, unlock skins, and compete on the leaderboard.
+A side-scrolling flappy-style browser game built entirely with vanilla HTML5, CSS3, and JavaScript. Originally crafted in 2013, revived and modernized in 2026.
 
 ## Project Structure
 
 | Path | Description |
 |---|---|
-| `index.html` | Application shell |
+| `index.html` | Application shell with PWA support |
 | `css/style.css` | Styles and layout |
 | `js/game.js` | Game logic and rendering |
 | `CONTROLS.md` | Key bindings and touch controls |
@@ -25,6 +25,7 @@ A side-scrolling flappy-style browser game built entirely with vanilla HTML5, CS
 - **HTML5** — Canvas rendering, semantic markup
 - **CSS3** — Responsive layout, touch optimizations
 - **JavaScript** — Game loop, physics, audio (Web Audio API), localStorage persistence
+- **PWA** — Installable web app with manifest
 
 ## Features
 
@@ -41,6 +42,7 @@ A side-scrolling flappy-style browser game built entirely with vanilla HTML5, CS
 - Top 10 leaderboard with LocalStorage persistence
 - Responsive canvas for mobile and desktop
 - Touch, mouse, and keyboard input
+- PWA installable on mobile and desktop
 
 ## How to Play
 
@@ -63,7 +65,12 @@ A side-scrolling flappy-style browser game built entirely with vanilla HTML5, CS
 | Oct 2013 | Powerups, difficulty levels, dynamic scaling |
 | Nov 2013 | Leaderboard, mobile support, responsive canvas |
 | Dec 2013 | README, LICENSE, final polish, v1.0 release |
+| Jun 2026 | Revival — PWA, modern meta, Vercel deploy |
 
 ## License
 
 **MIT** — See [LICENSE](LICENSE).
+
+---
+
+*Originally developed in 2013. Revived in 2026.*
