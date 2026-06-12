@@ -1,5 +1,5 @@
 var c=document.getElementById("c"),ctx=c.getContext("2d");
-var W=320,H=480;c.width=W;c.height=H;
+var W=320,H=480;c.width=W;c.height=H;resize()
 function rand(a,b){return a+Math.random()*(b-a)}
 function clamp(v,mn,mx){return v<mn?mn:v>mx?mx:v}
 function lerp(a,b,t){return a+(b-a)*t}
@@ -75,7 +75,7 @@ function drawGameOver(){if(goAlpha<1)goAlpha+=0.05;if(displayScore<score)display
 function setGameOver(){if(state!=S.GAMEOVER){state=S.GAMEOVER;goAlpha=0;displayScore=0;restartDelay=30;submitScore();playHit();emitBurst(birdX,birdY,20,"#e74c3c");triggerShake(8,15);triggerFlash();triggerSlowMo();stats.games++;saveStats()}}
 function resetGame(){score=0;scorePop=0;birdY=240;birdVy=0;birdRot=0;pipes=[];particles=[];flapEase=0;slowMo=1;hasShield=false;scoreMult=1;state=S.PLAYING;spawnPipe();checkAchievements()}
 function render(){switch(state){case S.MENU:drawMenu();break;case S.PLAYING:drawSky();drawStars();drawClouds();drawFog();drawPipes();drawGround();drawPowerups();drawBird();drawScore();drawPowerupHUD();break;case S.GAMEOVER:drawSky();drawStars();drawClouds();drawFog();drawPipes();drawGround();drawBird();drawGameOver();drawLeaderboard();break}drawParticles();drawComboTexts();drawOrientationWarn();drawNotifications();drawToasts();drawFPS()}
-function update(){if(restartDelay>0)restartDelay--;if(state==S.PLAYING){updateStars();updateClouds();updateGround();updateBird();updatePipes();checkPowerupCollision();updatePowerups();updateSlowMo();if(birdY+birdR>=groundY||checkPipeCollision())setGameOver()}updateParticles();updateComboTexts();updatePowerupTimers();applyShashake()}
+function update(){if(restartDelay>0)restartDelay--;if(state==S.PLAYING){updateStars();updateClouds();updateGround();updateBird();updatePipes();checkPowerupCollision();updatePowerups();updateSlowMo();if(birdY+birdR>=groundY||checkPipeCollision())setGameOver()}updateParticles();updateComboTexts();updatePowerupTimers();applyShake()}
 function initAudio(){if(!actx)try{actx=new(window.AudioContext||window.webkitAudioContext)()}catch(e){}}
 function playTone(freq,dur,type,vol){if(muted||!actx)return;var o=actx.createOscillator(),g=actx.createGain();o.connect(g);g.connect(actx.destination);o.type=type||"sine";o.frequency.setValueAtTime(freq,actx.currentTime);g.gain.setValueAtTime(vol||0.3,actx.currentTime);g.gain.exponentialRampToValueAtTime(0.001,actx.currentTime+dur);o.start(actx.currentTime);o.stop(actx.currentTime+dur)}
 function playFlap(){playTone(400,0.1,"sine",0.3)}
