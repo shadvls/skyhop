@@ -122,12 +122,14 @@ function emitComboText(x,y,txt){comboTexts.push({x:x,y:y,text:txt,life:1})}
 function updateComboTexts(){for(var i=comboTexts.length-1;i>=0;i--){var t=comboTexts[i];t.y-=1;t.life-=0.02;if(t.life<=0)comboTexts.splice(i,1)}}
 function drawComboTexts(){for(var i=0;i<comboTexts.length;i++){var t=comboTexts[i];ctx.globalAlpha=t.life;ctx.fillStyle="#ffd700";ctx.font="bold 14px monospace";ctx.textAlign="center";ctx.fillText(t.text,t.x,t.y)}ctx.globalAlpha=1}
 function resize(){var r=Math.min(window.innerWidth/W,window.innerHeight/H);c.style.width=(W*r)+"px";c.style.height=(H*r)+"px";scale=r}
-function getPos(e){var r=c.getBoundingClientRect();return{x:(e.clientX||e.touches[0].clientX-r.left)/scale,y:(e.clientY||e.touches[0].clientY-r.top)/scale}}
+function getPos(e){var cx=e.clientX||(e.touches&&e.touches[0]&&e.touches[0].clientX)||0,cy=e.clientY||(e.touches&&e.touches[0]&&e.touches[0].clientY)||0;var r=c.getBoundingClientRect();return{x:(cx-r.left)/scale,y:(cy-r.top)/scale}}
 function checkOrientation(){landscapeWarn=window.innerWidth>window.innerHeight&&window.innerWidth<500}
 function drawOrientationWarn(){if(landscapeWarn){ctx.fillStyle="rgba(0,0,0,0.9)";ctx.fillRect(0,0,W,H);ctx.fillStyle="#fff";ctx.font="16px monospace";ctx.textAlign="center";ctx.fillText("Please rotate your device",W/2,H/2)}}
 function onTap(e){var pos=getPos(e);initAudio();if(restartDelay>0)return;if(state==S.MENU){handleSkinClick(pos.x,pos.y);handleDiffClick(pos.x,pos.y)}else if(state==S.PLAYING){if(!stats.games)unlockAchievement("firstFlap");birdFlap();playFlap();emitBurst(birdX,birdY,3,"rgba(255,255,255,0.5)")}else if(state==S.GAMEOVER&&restartDelay<=0){resetGame()}}
 function onTouchStart(e){e.preventDefault();if(e.touches.length>1)return;touchTimer=setTimeout(function(){touchTimer=null},500)}
 function onTouchEnd(e){if(touchTimer&&e.changedTouches.length==1){clearTimeout(touchTimer);touchTimer=null;onTap(e)}}
+window.addEventListener("resize",resize);
+window.addEventListener("orientationchange",function(){setTimeout(resize,100)});
 c.addEventListener("mousedown",onTap);
 c.addEventListener("touchstart",onTouchStart,{passive:false});
 c.addEventListener("touchend",onTouchEnd);
