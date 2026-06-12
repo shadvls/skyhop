@@ -142,3 +142,4 @@ function saveStats(){try{localStorage.setItem("skyhop_stats",JSON.stringify(stat
 function drawFPS(){fpsCount++;var now=Date.now();if(now-fpsTime>1000){fps=fpsCount;fpsCount=0;fpsTime=now}if(konamiActive){ctx.fillStyle="rgba(0,255,0,0.5)";ctx.font="10px monospace";ctx.textAlign="left";ctx.fillText(fps+" FPS",5,25)}}
 function gameLoop(){update();render();requestAnimationFrame(gameLoop)}
 function startGameLoop(){gameLoop()}
+startGameLoop()
