@@ -1,0 +1,35 @@
+name: CI
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+    branches: [main]
+  workflow_dispatch:
+
+concurrency:
+  group: ci-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  check:
+    name: "Lint & Validate"
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+
+      - name: Check required files exist
+        run: |
+          for f in index.html js/game.js css/style.css favicon.ico; do
+            test -f "$f" && echo "✓ $f" || { echo "✗ $f missing"; exit 1; }
+          done
+
+      - name: JS syntax check
+        run: node --check js/game.js
+
+      - name: HTML validity check
+        run: npx html-validator-cli@latest --file=index.html --quiet || true
