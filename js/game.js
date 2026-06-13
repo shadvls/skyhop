@@ -23,7 +23,7 @@ var scale=1;
 var cloudOffset=0,starPhase=0,groundX=0;
 var D={EASY:0,NORMAL:1,HARD:2,INSANE:3};
 var difficulty=D.NORMAL;
-var diffPresets=[{pipeGap:140,pipeSpeed:1.5,gravity:0.22,flap:-4.8},{pipeGap:120,pipeSpeed:2,gravity:0.25,flap:-5.5},{pipeGap:100,pipeSpeed:2.5,gravity:0.28,flap:-5.8},{pipeGap:85,pipeSpeed:3,gravity:0.32,flap:-6.2}];
+var diffPresets=[{pipeGap:140,pipeSpeed:1.5,gravity:0.22,flap:-4.8,pipeInterval:120},{pipeGap:120,pipeSpeed:2,gravity:0.25,flap:-5.5,pipeInterval:100},{pipeGap:100,pipeSpeed:2.5,gravity:0.28,flap:-5.8,pipeInterval:85},{pipeGap:85,pipeSpeed:3,gravity:0.32,flap:-6.2,pipeInterval:70}];
 var skyGrad=null;
 function cacheSkyGradient(){var g=ctx.createLinearGradient(0,0,0,H);g.addColorStop(0,"#1a1a2e");g.addColorStop(1,"#0f3460");skyGrad=g}
 var PIPE_BODY="#73b543",PIPE_CAP="#5a9136";
@@ -34,7 +34,7 @@ try{var savedSkin=localStorage.getItem("skyhop_skin");if(savedSkin&&skins[savedS
 var skinUnlocks={blue:5,gold:15,raven:30};
 var themes={default:{sky1:"#1a1a2e",sky2:"#0f3460",pipe:"#73b543",pipeCap:"#5a9136",ground1:"#4a3728",ground2:"#5c4433"},sunset:{sky1:"#2d1b3d",sky2:"#e74c3c",pipe:"#c0392b",pipeCap:"#a93226",ground1:"#4a3728",ground2:"#5c4433"},midnight:{sky1:"#0a0a0f",sky2:"#1a1a2e",pipe:"#2c3e50",pipeCap:"#1a252f",ground1:"#111",ground2:"#222"},arctic:{sky1:"#3498db",sky2:"#ecf0f1",pipe:"#7f8c8d",pipeCap:"#95a5a6",ground1:"#ecf0f1",ground2:"#bdc3c6"},swamp:{sky1:"#1e3a1e",sky2:"#2d5a2d",pipe:"#4a7a4a",pipeCap:"#3a6a3a",ground1:"#2d1f0e",ground2:"#3d2f1e"}};
 var themeName="default";
-var powerups=[],powerupTimer=0,hasShield=false,scoreMult=1;
+var powerups=[],powerupTimer=0,pipeTimer=0,hasShield=false,scoreMult=1;
 var powerupTimers={slowmo:0,shield:0,magnet:0};
 var comboTexts=[];
 var lb=[];
@@ -73,10 +73,10 @@ function drawScore(){ctx.textAlign="center";if(scorePop>0){ctx.font="48px monosp
 function drawMenu(){drawSky();drawGround();ctx.fillStyle="#fff";ctx.font="bold 36px monospace";ctx.textAlign="center";ctx.fillText("SKYHOP",W/2,120);ctx.fillStyle="#888";ctx.font="14px monospace";ctx.fillText("Tap to Flap",W/2,200);menuBlink+=0.05;if(Math.sin(menuBlink)>0){ctx.fillStyle="#aaa";ctx.font="12px monospace";ctx.fillText("~ tap to start ~",W/2,260)}var g=ctx.createLinearGradient(W/2-100,0,W/2+100,0);g.addColorStop(0,"transparent");g.addColorStop(0.5,"rgba(255,255,255,0.05)");g.addColorStop(1,"transparent");ctx.fillStyle=g;ctx.fillRect(W/2-100,280,200,1);ctx.save();ctx.translate(W/2,320);ctx.rotate(Math.sin(Date.now()/500)*0.1);ctx.fillStyle="#f5c842";ctx.beginPath();ctx.ellipse(0,0,24,17,0,0,Math.PI*2);ctx.fill();ctx.fillStyle="#ff6b35";ctx.beginPath();ctx.moveTo(12,0);ctx.lineTo(29,2);ctx.lineTo(12,7);ctx.closePath();ctx.fill();ctx.restore();ctx.fillStyle="#555";ctx.font="10px monospace";ctx.fillText("Best: "+highScore,W/2,380);drawDifficultySelector();drawSkinSelector();drawThemeSelector()}
 function drawGameOver(){if(goAlpha<1)goAlpha+=0.05;if(displayScore<score)displayScore+=Math.ceil((score-displayScore)/3);ctx.fillStyle="rgba(0,0,0,"+(0.6*goAlpha)+")";ctx.fillRect(0,0,W,H);ctx.fillStyle="#fff";ctx.font="bold 28px monospace";ctx.textAlign="center";ctx.fillText("GAME OVER",W/2,H/2-30);ctx.font="16px monospace";ctx.fillText("Score: "+displayScore,W/2,H/2+10);ctx.fillText("Best: "+highScore,W/2,H/2+40);ctx.fillStyle="#aaa";ctx.font="14px monospace";ctx.fillText("Tap to restart",W/2,H/2+80)}
 function setGameOver(){if(state!=S.GAMEOVER){state=S.GAMEOVER;goAlpha=0;displayScore=0;restartDelay=30;submitScore();playHit();emitBurst(birdX,birdY,20,"#e74c3c");triggerShake(8,15);triggerFlash();triggerSlowMo();stats.games++;saveStats()}}
-function goToMenu(){score=0;scorePop=0;displayScore=0;birdY=240;birdVy=0;birdRot=0;pipes=[];particles=[];flapEase=0;slowMo=1;hasShield=false;scoreMult=1;state=S.MENU;goAlpha=0;restartDelay=0}
-function resetGame(){score=0;scorePop=0;birdY=240;birdVy=0;birdRot=0;pipes=[];particles=[];flapEase=0;slowMo=1;hasShield=false;scoreMult=1;state=S.PLAYING;spawnPipe();checkAchievements()}
+function goToMenu(){score=0;scorePop=0;displayScore=0;birdY=240;birdVy=0;birdRot=0;pipes=[];particles=[];flapEase=0;slowMo=1;hasShield=false;scoreMult=1;pipeTimer=0;state=S.MENU;goAlpha=0;restartDelay=0}
+function resetGame(){score=0;scorePop=0;birdY=240;birdVy=0;birdRot=0;pipes=[];particles=[];flapEase=0;slowMo=1;hasShield=false;scoreMult=1;pipeTimer=0;state=S.PLAYING;spawnPipe();checkAchievements()}
 function render(){checkOrientation();ctx.save();if(shakeTimer>0){var sx=rand(-shakeIntensity,shakeIntensity),sy=rand(-shakeIntensity,shakeIntensity);ctx.translate(sx,sy)}switch(state){case S.MENU:drawMenu();break;case S.PLAYING:drawSky();drawStars();drawClouds();drawFog();drawPipes();drawGround();drawPowerups();drawBird();drawScore();drawPowerupHUD();break;case S.GAMEOVER:drawSky();drawStars();drawClouds();drawFog();drawPipes();drawGround();drawBird();drawGameOver();drawLeaderboard();break}drawParticles();drawComboTexts();drawOrientationWarn();drawNotifications();drawToasts();drawFPS();ctx.restore()}
-function update(){if(restartDelay>0)restartDelay--;if(state==S.PLAYING){updateStars();updateClouds();updateGround();updateBird();updatePipes();checkPowerupCollision();updatePowerups();updateSlowMo();if(birdY+birdR>=groundY||checkPipeCollision())setGameOver()}updateParticles();updateComboTexts();updatePowerupTimers();applyShake()}
+function update(){if(restartDelay>0)restartDelay--;if(state==S.PLAYING){updateStars();updateClouds();updateGround();updateBird();updatePipes();pipeTimer++;var maxPipes=diffPresets[difficulty].pipeInterval||100;if(pipeTimer>=maxPipes){spawnPipe();pipeTimer=0}checkPowerupCollision();updatePowerups();updateSlowMo();if(birdY+birdR>=groundY||checkPipeCollision())setGameOver()}updateParticles();updateComboTexts();updatePowerupTimers();applyShake()}
 function initAudio(){if(!actx)try{actx=new(window.AudioContext||window.webkitAudioContext)()}catch(e){}}
 function playTone(freq,dur,type,vol){if(muted||!actx)return;var o=actx.createOscillator(),g=actx.createGain();o.connect(g);g.connect(actx.destination);o.type=type||"sine";o.frequency.setValueAtTime(freq,actx.currentTime);g.gain.setValueAtTime(vol||0.3,actx.currentTime);g.gain.exponentialRampToValueAtTime(0.001,actx.currentTime+dur);o.start(actx.currentTime);o.stop(actx.currentTime+dur)}
 function playFlap(){playTone(400,0.1,"sine",0.3)}
